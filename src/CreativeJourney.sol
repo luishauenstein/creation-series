@@ -18,8 +18,9 @@ contract CreativeJourney is ERC721Enumerable, Ownable {
         _tokenURISuffix = tokenURISuffix;
     }
 
-    function mint(address to, uint256 tokenId) public onlyOwner {
-        require(tokenId > 0 && tokenId <= MAX_SUPPLY, "Invalid token ID or exceeds max supply");
+    function mint(address to) public onlyOwner {
+        require(totalSupply() < MAX_SUPPLY, "Max supply reached");
+        uint256 tokenId = totalSupply() + 1;
         _safeMint(to, tokenId);
     }
 

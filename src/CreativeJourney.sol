@@ -4,9 +4,9 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract MyNFT is ERC721Enumerable, Ownable {
-    uint256 public MAX_SUPPLY = 10000;
-    uint256 public salePrice = 0.1 ether;
+contract CreativeJourney is ERC721Enumerable, Ownable {
+    uint256 public MAX_SUPPLY; // init to 0
+    uint256 public salePrice; // init to 0
     string private _baseTokenURI;
     string private _tokenURISuffix;
 

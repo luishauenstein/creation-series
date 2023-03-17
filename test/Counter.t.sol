@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-import "forge-std/Test.sol";
-import "../src/Counter.sol";
+import "@forge-std/Test.sol";
+import "../src/CreativeJourney.sol";
 
-contract CounterTest is Test {
-    Counter public counter;
+contract CreativeJourneyTest is Test {
+    CreativeJourney public creativeJourney;
 
     function setUp() public {
-        counter = new Counter();
-        counter.setNumber(0);
+        creativeJourney = new CreativeJourney("CreativeJourneyTest", "CJT", "https://nft.luish.xyz/", ".json");
+        creativeJourney.increaseMaxSupply
     }
 
     function testIncrement() public {

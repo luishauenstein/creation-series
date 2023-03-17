@@ -3,6 +3,7 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
 contract CreativeJourney is ERC721Enumerable, Ownable {
     uint256 public MAX_SUPPLY; // init to 0
@@ -49,7 +50,8 @@ contract CreativeJourney is ERC721Enumerable, Ownable {
     function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
         require(_exists(tokenId), "Token does not exist");
         if (bytes(_baseTokenURI).length > 0) {
-            return string(abi.encodePacked(_baseTokenURI, tokenId.toString(), _tokenURISuffix));
+            string memory tokenString = Strings.toString(tokenId);
+            return string(abi.encodePacked(_baseTokenURI, tokenString, _tokenURISuffix));
         } else {
             return "";
         }

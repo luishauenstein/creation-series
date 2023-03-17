@@ -56,4 +56,9 @@ contract CreativeJourney is ERC721Enumerable, Ownable {
             return "";
         }
     }
+
+    function withdraw() public onlyOwner {
+        uint balance = address(this).balance;
+        payable(msg.sender).transfer(balance);
+    }
 }

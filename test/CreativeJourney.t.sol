@@ -48,6 +48,7 @@ contract CreativeJourneyTest is Test {
     function testMintOutsideRange() public {
         address myAddress = msg.sender;
         creativeJourney.mint(myAddress); // first mint within range
+        assertEq(creativeJourney.MAX_SUPPLY(), 1);
         creativeJourney.mint(myAddress); // second mint outside range
         assertEq(creativeJourney.totalSupply(), 2);
         assertEq(creativeJourney.MAX_SUPPLY(), 2);
@@ -121,4 +122,31 @@ contract CreativeJourneyTest is Test {
 
 
     // token URI tests still missing
+    function testTokenURI() public {
+        creativeJourney.mint(msg.sender);
+        creativeJourney.mint(msg.sender);
+        // return correct token URI
+        assertEq(creativeJourney.tokenURI(1), "https://nft.luish.xyz/1.json");
+        assertEq(creativeJourney.tokenURI(2), "https://nft.luish.xyz/2.json");
+        // test updating baseURI
+        creativeJourney.setBaseURI("https://abc.xyz/");
+        assertEq(creativeJourney.tokenURI(1), "https://abc.xyz/1.json");
+        // test updating URISuffix
+        creativeJourney.setTokenURISuffix(".html");
+        assertEq(creativeJourney.tokenURI(1), "https://abc.xyz/1.html");
+        creativeJourney.setTokenURISuffix("");
+        assertEq(creativeJourney.tokenURI(1), "https://abc.xyz/1");
+    }
+
+    // updating baseURI fails as non-owner
+    function testFailUpdateBaseURI() public {
+        vm.prank(address(21));
+        creativeJourney.setBaseURI("https://abc.xyz/");
+    }
+
+    // updating tokenURISuffix fails as non-owner
+    function testFailUpdatetokenURISuffix() public {
+        vm.prank(address(21));
+        creativeJourney.setTokenURISuffix("");
+    }
 }

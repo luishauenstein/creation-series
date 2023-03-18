@@ -9,16 +9,10 @@ contract CreativeJourneyTest is Test {
 
     function setUp() public {
         creativeJourney = new CreativeJourney("CreativeJourneyTest", "CJT", "https://nft.luish.xyz/", ".json");
-        creativeJourney.increaseMaxSupply
+        creativeJourney.increaseMaxSupply(1);
     }
 
-    function testIncrement() public {
-        counter.increment();
-        assertEq(counter.number(), 1);
-    }
-
-    function testSetNumber(uint256 x) public {
-        counter.setNumber(x);
-        assertEq(counter.number(), x);
+    function testIncreaseMaxSupply() public {
+        assertEq(creativeJourney.MAX_SUPPLY(), 1);
     }
 }

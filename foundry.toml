@@ -2,5 +2,11 @@
 src = 'src'
 out = 'out'
 libs = ['lib']
+optimizer = true
+optimizer_runs = 20_000
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
+
+[etherscan]
+optimism-goerli = { key = "{$OPTIMISM_ETHERSCAN_API_KEY}", url = "https://api-goerli-optimistic.etherscan.io/api" }
+optimism = { key = "{$OPTIMISM_ETHERSCAN_API_KEY}", url="https://api-optimistic.etherscan.io/api" }

@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract CreativeJourney is ERC721Enumerable, Ownable {
+contract CreationSeries is ERC721Enumerable, Ownable {
     uint256 public MAX_SUPPLY; // init to 0
     uint256 public salePrice; // init to 0
     string private _baseTokenURI;

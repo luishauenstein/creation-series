@@ -6,8 +6,8 @@ import "../src/CreativeJourney.sol";
 
 contract CreativeJourneyScript is Script {
     function run() public {
-        string memory name = "Luis' Creative Output";
-        string memory symbol = "LUISCO";
+        string memory name = "The Creation Series";
+        string memory symbol = "CREATION";
         string memory baseURI = "https://nft.luish.xyz/";
         string memory tokenURISuffix = ".json";
 
